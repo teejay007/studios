@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://127.0.0.1:5500/PhotographySite/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEEJAY Studios | Photography Portfolio</title>
+    <style>
+        /* --- Global Resets & Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scroll feature for the button */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212; /* Dark background elegant choice for photography */
+    color: #e0e0e0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Hero Section Styling --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* High quality placeholder image contextually styling a camera/lens atmosphere */
+    background: url('https://images.unsplash.com/photo-1495707902641-75cac588d2e9?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Dims the image dynamically to keep text completely readable */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: #cccccc;
+}
+
+/* --- Interactive Button --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: #121212;
+    cursor: pointer;
+}
+
+/* --- Main Layout & Gallery --- */
+.gallery-section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.section-title .line {
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: #888;
+    margin: 15px auto 0 auto;
+}
+
+/* Flexbox Gallery Layout */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    flex: 1 1 calc(33.333% - 14px); /* Flexbox sizing: 3 columns minus the gap layout logic */
+    height: 350px;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps image perfectly proportioned without squishing */
+    transition: transform 0.5s ease;
+}
+
+/* Hover Zoom & Overlay Effects */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover class, 
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.item-overlay p {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+}
+
+/* --- Footer Area Styling --- */
+footer {
+    background-color: #0a0a0a;
+    padding: 60px 20px 20px 20px;
+    border-top: 1px solid #1a1a1a;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+footer p {
+    font-weight: 300;
+    color: #999999;
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    margin-bottom: 40px;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: #cccccc;
+}
+
+.contact-details strong {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #1a1a1a;
+    padding-top: 25px;
+}
+
+.footer-bottom p {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #555555;
+    margin: 0;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+
+/* Tablets / Medium Screens */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .gallery-section {
+        padding: 60px 20px;
+    }
+    
+    .gallery-item {
+        flex: 1 1 calc(50% - 10px); /* Drops smoothly down to 2 columns */
+        height: 300px;
+    }
+}
+
+/* Mobile Devices / Small Screens */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    
+    .gallery-item {
+        flex: 1 1 100%; /* Stacks beautifully into 1 vertical column */
+        height: 250px;
+    }
+    
+    footer h3 {
+        font-size: 1.5rem;
+    }
+}
+    </style>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./TEEJAY Studios _ Photography Portfolio_files/css2" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Hero / Landing Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>TEEJAY STUDIOS</h1>
+            <p>Capturing raw emotion, frozen in time.</p>
+            <a href="http://127.0.0.1:5500/PhotographySite/index.html#gallery" class="btn">View Showcase</a>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main>
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="section-title">
+                <h2>The Showcase</h2>
+                <span class="line"></span>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1500485035595-cbe6f645feb1" alt="Landscape mountains covered in fog">
+                    <div class="item-overlay"><p>Mystic Peaks</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1534528741775-53994a69daeb" alt="Moody studio portrait photography">
+                    <div class="item-overlay"><p>Expressions</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1477959858617-67f85cf4f1df" alt="Cyberpunk neon city street lighting">
+                    <div class="item-overlay"><p>Neon Pulse</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1513836279014-a89f7a76ae86" alt="Sunlight piercing through deep forest trees">
+                    <div class="item-overlay"><p>Sylvan Light</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1518005020951-eccb494ad742" alt="Minimalist architectural concrete structure arches">
+                    <div class="item-overlay"><p>Concrete Geometry</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./TEEJAY Studios _ Photography Portfolio_files/photo-1469474968028-56623f02e42e" alt="Golden hour desert valley road trip">
+                    <div class="item-overlay"><p>Dust &amp; Horizon</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="footer-content">
+            <h3>Let's Create Together</h3>
+            <p>Available for commercial bookings, editorial projects, and creative collaborations worldwide.</p>
+            <div class="contact-details">
+                <p><strong>Email:</strong> hello@teejaystudios.com</p>
+                <p><strong>Phone:</strong> +1 (555) 234-7890</p>
+                <p><strong>Studio:</strong> 404 Exposure Blvd, New York, NY</p>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 TEEJAY STUDIOS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
